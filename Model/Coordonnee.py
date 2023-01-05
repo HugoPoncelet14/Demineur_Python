@@ -40,3 +40,5 @@ def getColonneCoordonnee(coord: tuple) -> int :
 
 
 
+
+

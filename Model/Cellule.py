@@ -26,5 +26,18 @@ def isContenuCorrect(n : int) -> bool:
             rep = True
     return rep
 
+def construireCellule(n = 0, booleen = False) -> dict:
+    if type(booleen) != bool:
+        raise TypeError(f"construireCellule : le second paramètre ({booleen}) n’est pas un booléen")
+    if n>8 or n<-1:
+        raise ValueError(f"construireCellule : le contenu {n} n’est pas correct")
+    dico = { const.CONTENU : n , const.VISIBLE  : booleen }
+    return dico
+
+
+
+
+
+
 
 

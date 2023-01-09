@@ -26,7 +26,7 @@ def isContenuCorrect(n : int) -> bool:
             rep = True
     return rep
 
-def construireCellule(n = 0, visible = False) -> dict:
+def construireCellule(n : int = 0, visible : bool = False) -> dict:
     if type(visible) != bool:
         raise TypeError(f"construireCellule : le second paramètre ({visible}) n’est pas un booléen")
     if isContenuCorrect(n) == False:

@@ -90,6 +90,31 @@ def getCelluleGrilleDemineur(g:list,coord:tuple):
     return g[coord[0]][coord[1]]
 
 
+def getContenuGrilleDemineur(g:list,coord:tuple):
+    return getCelluleGrilleDemineur(g,coord)[const.CONTENU]
+
+def setContenuGrilleDemineur(g:list,coord:tuple,n:int):
+    if type(n) != int:
+        raise TypeError(f"setContenuGrilleDemineur : le contenu {n} n'est pas correct")
+    if (n < 0 or n > 8) and n != const.ID_MINE :
+        raise ValueError(f"setContenuGrilleDemineur : La valeur du contenu {n} n'est pas correct")
+    getCelluleGrilleDemineur(g,coord)[const.CONTENU] = n
+
+def isVisibleGrilleDemineur(g:list,coord:tuple):
+    return getCelluleGrilleDemineur(g,coord)[const.VISIBLE]
+
+def setVisibleGrilleDemineur(g:list,coord:tuple,visible:bool):
+    if type(visible) != bool:
+        raise TypeError(f"setVisibleGrilleDemineur : le type de visible {type(visible)} n'est pas correct")
+    getCelluleGrilleDemineur(g, coord)[const.VISIBLE] = visible
+
+def contientMineGrilleDemineur(g:list,coord:tuple):
+    rep = False
+    if getCelluleGrilleDemineur(g, coord)[const.CONTENU] == const.ID_MINE:
+        rep = True
+    return rep
+
+
 
 
 

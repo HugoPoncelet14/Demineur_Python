@@ -76,6 +76,13 @@ def isAnnotationCorrecte(ann:str):
         rep = True
     return rep
 
+def getAnnotationCellule(dico:dict):
+    if type_cellule(dico) == False:
+        raise TypeError(f"getAnnotationCellule : le paramètre valeur_du paramètre n’est pas une cellule")
+    return dico.get(const.ANNOTATION,None)
+
+
+
 
 
 

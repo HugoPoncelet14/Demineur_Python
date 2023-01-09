@@ -66,7 +66,7 @@ def construireGrilleDemineur(li:int, co:int) -> list:
 
 def getNbLignesGrilleDemineur(g:list) -> int:
     if type_grille_demineur(g) == False:
-        raise TypeError(" getNbLignesGrilleDemineur : Le paramètre n’est pas une grille")
+        raise TypeError("getNbLignesGrilleDemineur : Le paramètre n’est pas une grille")
     return len(g)
 
 def getNbColonnesGrilleDemineur(g:list) -> int:
@@ -142,7 +142,31 @@ def placerMinesGrilleDemineur(g:list,nb:int,coord:tuple) -> None:
         if getContenuGrilleDemineur(g,coord_mine) != const.ID_MINE and coord_mine != coord:
             setContenuGrilleDemineur(g,coord_mine,const.ID_MINE)
             mines_poses -= 1
+    compterMinesVoisinesGrilleDemineur(g)
     return None
+
+def compterMinesVoisinesGrilleDemineur(g:list) -> None:
+    for i in range(getNbLignesGrilleDemineur(g)):
+        for l in range(getNbColonnesGrilleDemineur(g)):
+            if getContenuGrilleDemineur(g,(i,l)) != const.ID_MINE:
+                liste_voisines = getCoordonneeVoisinsGrilleDemineur(g,(i,l))
+                nb_mines = 0
+                for j in range(len(liste_voisines)):
+                    if getContenuGrilleDemineur(g,liste_voisines[j]) == const.ID_MINE:
+                        nb_mines += 1
+                setContenuGrilleDemineur(g,(i,l),nb_mines)
+    return None
+
+def getNbMinesGrilleDemineur(g:list) -> int:
+    if type_grille_demineur(g) == False:
+        raise ValueError(f"getNbMinesGrilleDemineur : le paramètre n’est pas une grille.")
+    nb_mines = 0
+    for i in range(getNbLignesGrilleDemineur(g)):
+        for l in range(getNbColonnesGrilleDemineur(g)):
+            if contientMineGrilleDemineur(g,(i,l)):
+                nb_mines += 1
+    return nb_mines
+
 
 
 

@@ -31,7 +31,7 @@ def construireCellule(n : int = 0, visible : bool = False) -> dict:
         raise TypeError(f"construireCellule : le second paramètre ({visible}) n’est pas un booléen")
     if isContenuCorrect(n) == False:
         raise ValueError(f"construireCellule : le contenu {n} n’est pas correct")
-    dico = {const.CONTENU:n, const.VISIBLE:visible}
+    dico = {const.CONTENU:n, const.VISIBLE:visible, const.ANNOTATION:None}
     return dico
 
 def getContenuCellule(dico:dict) -> int:
@@ -69,6 +69,15 @@ def contientMineCellule(dico:dict) -> bool:
     if dico[const.CONTENU] == const.ID_MINE:
         rep = True
     return rep
+
+def isAnnotationCorrecte(ann:str):
+    rep = False
+    if ann == None or ann ==  const.DOUTE or ann ==  const.FLAG:
+        rep = True
+    return rep
+
+
+
 
 
 

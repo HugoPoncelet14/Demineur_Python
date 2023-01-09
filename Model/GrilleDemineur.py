@@ -167,7 +167,6 @@ def getNbMinesGrilleDemineur(g:list) -> int:
                 nb_mines += 1
     return nb_mines
 
-def
 
 
 

@@ -19,6 +19,8 @@ def type_coordonnee(coord: tuple) -> bool:
         and coord[0] >= 0 and coord[1] >= 0
 
 def construireCoordonnee(num_ligne: int,num_colonne: int) -> tuple:
+    '''retourne une coordonnée de type tuple formée grace a num_ligne et num_colonne passés en parametre de la forme (num_ligne,num_colonne)'''
+
     if type(num_ligne) != int or type(num_colonne) != int:
         raise TypeError(f" construireCoordonnee : Le numéro de ligne {type(num_ligne)} ou le numéro de colonne {type(num_colonne)} ne sont pas des entiers ")
     if num_ligne < 0 or num_colonne < 0:
@@ -26,11 +28,15 @@ def construireCoordonnee(num_ligne: int,num_colonne: int) -> tuple:
     return (num_ligne,num_colonne)
 
 def getLigneCoordonnee(coord: tuple) -> int :
+    '''retourne le numero de ligne de la coordonnée 'coord' passée en paramètre'''
+
     if type(coord) != tuple:
         raise TypeError(f"getligneCoordonnee : Le paramètre n’est pas une coordonnée")
     return coord[0]
 
 def getColonneCoordonnee(coord: tuple) -> int :
+    '''retourne le numero de colonne de la coordonnée 'coord' passée en paramètre'''
+
     if type(coord) != tuple:
         raise TypeError(f"getColonneCoordonnee : Le paramètre n’est pas une coordonnée")
     return coord[1]
